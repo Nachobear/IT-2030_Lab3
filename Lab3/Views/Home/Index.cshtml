@@ -1,0 +1,50 @@
+﻿
+@model PriceQuotationModel
+@{
+    ViewData["Title"] = "Price Quotation";
+}
+<div class="container">
+    <header class="jumbotron mt-2 bg-success text-light">
+        
+        <h1 class="text-center"><span class="fas fa-money-bill-alt fa-1x mr-3"></span>@ViewBag.Title</h1>
+    </header>
+    <main>
+        <form asp-action="Index" method="post">
+          
+            <div class="row form-group">
+                <label asp-for="Subtotal" class="col-sm-3">
+                    Subtotal:
+                </label>
+                <div class="col-sm-4">
+                    <input asp-for="Subtotal" class="form-control"/>
+                </div>
+                <div class="col-sm-4">
+                    <span asp-validation-for="Subtotal"
+                          class="text-danger col"></span>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label asp-for="DiscountPercent" class="col-sm-3">
+                    Discount Percent:
+                </label>
+                <div class="col-sm-4">
+                    <input asp-for="DiscountPercent" class="form-control" />
+                </div>
+                <div class="col-sm-5">
+                    <span asp-validation-for="DiscountPercent"
+                          class="text-danger col"></span>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="col-sm-3">Discount Amount:</label>
+                <label class="col-sm-4">@ViewBag.DA.ToString("C2")</label>
+            </div>
+            <div class="row form-group">
+                <label class="col-sm-3">Total:</label>
+                <label class="col-sm-4">@ViewBag.TL.ToString("C2")</label>
+            </div>
+            <button type="submit" class="btn btn-success btn-lg mr-2">Calculate</button>
+            <a class="btn btn-success btn-lg" asp-action="Index">Clear</a>
+        </form>
+    </main>
+</div>
